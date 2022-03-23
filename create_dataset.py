@@ -21,10 +21,12 @@ timestamps = pd.date_range(
 timestamps = timestamps.drop(labels=np.arange(18), axis=0)
 
 # Creating a DataFrame with the driver IDs we want to get features for
-driver_ids = pd.DataFrame([1001, 1002, 1003, 1004, 1005], columns=["driver_id"])
+driver_ids = pd.DataFrame(data=[1001, 1002, 1003, 1004, 1005], 
+                          columns=["driver_id"])
 
 # Creating the cartersian product of our timestamps and entities 
-entity_df = timestamps.merge(right=driver_ids, how="cross")
+entity_df = timestamps.merge(right=driver_ids, 
+                             how="cross")
 
 # Getting the indicated historical features
 # and joining them with our entity DataFrame
@@ -41,7 +43,7 @@ data_job = store.get_historical_features(
 dataset = store.create_saved_dataset(
     from_=data_job,
     name="driver_stats",
-    storage=SavedDatasetFileStorage("driver_stats/data/driver_stats.parquet")
+    storage=SavedDatasetFileStorage(path="driver_stats/data/driver_stats.parquet")
 )
 
 
@@ -58,10 +60,12 @@ timestamps = pd.date_range(
 timestamps = timestamps.drop(labels=np.arange(18), axis=0)
 
 # Creating a DataFrame with the driver IDs we want to get features for
-driver_id = pd.DataFrame([1001], columns=["driver_id"])
+driver_id = pd.DataFrame(data=[1001], 
+                         columns=["driver_id"])
 
 # Creating the cartersian product of our timestamps and entities 
-entity_df_1001 = timestamps.merge(right=driver_id, how="cross")
+entity_df_1001 = timestamps.merge(right=driver_id, 
+                                  how="cross")
 
 # Getting the indicated historical features
 # and joining them with our entity DataFrame
@@ -78,5 +82,5 @@ data_job_1001 = store.get_historical_features(
 dataset_1001 = store.create_saved_dataset(
     from_=data_job,
     name="driver_stats_1001",
-    storage=SavedDatasetFileStorage("driver_stats/data/driver_stats_1001.parquet")
+    storage=SavedDatasetFileStorage(path="driver_stats/data/driver_stats_1001.parquet")
 )
