@@ -80,7 +80,7 @@ data_job_1001 = store.get_historical_features(
 
 # Storing the dataset as a local file
 dataset_1001 = store.create_saved_dataset(
-    from_=data_job,
+    from_=data_job_1001,
     name="driver_stats_1001",
     storage=SavedDatasetFileStorage(path="driver_stats/data/driver_stats_1001.parquet")
 )
