@@ -24,7 +24,7 @@ timestamps = timestamps.drop(labels=np.arange(18), axis=0)
 driver_ids = pd.DataFrame(data=[1001, 1002, 1003, 1004, 1005], 
                           columns=["driver_id"])
 
-# Creating the cartersian product of our timestamps and entities 
+# Creating the cartesian product of our timestamps and entities 
 entity_df = timestamps.merge(right=driver_ids, 
                              how="cross")
 
@@ -50,20 +50,11 @@ dataset = store.create_saved_dataset(
 
 #### GETTING HISTORICAL FEATURES FOR DRIVER ID 1001 ####
 
-# Creating timestamps
-timestamps = pd.date_range(
-    start="2021-08-31",    
-    end="2021-09-04",     
-    freq='H').to_frame(name="event_timestamp", index=False)
-
-# Dropping the first 17 hours of the day
-timestamps = timestamps.drop(labels=np.arange(18), axis=0)
-
 # Creating a DataFrame with the driver IDs we want to get features for
 driver_id = pd.DataFrame(data=[1001], 
                          columns=["driver_id"])
 
-# Creating the cartersian product of our timestamps and entities 
+# Creating the cartesian product of our timestamps and entities 
 entity_df_1001 = timestamps.merge(right=driver_id, 
                                   how="cross")
 
